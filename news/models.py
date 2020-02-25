@@ -1,10 +1,10 @@
 from django.db import models
 import datetime as dt
 
- @classmethod
-    def days_news(cls,date):
-        news = cls.objects.filter(pub_date__date = date)
-        return news
+@classmethod
+def days_news(cls,date):
+    news = cls.objects.filter(pub_date__date = date)
+    return news
 
 class Editor(models.Model):
     first_name = models.CharField(max_length =30)
