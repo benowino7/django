@@ -30,3 +30,16 @@ def past_days_news(request, past_date):
 
     news = Article.days_news(date)
     return render(request, 'all-news/past-news.html',{"date": date,"news":news})
+
+def search_results(request):
+
+    if 'article' in request.GET and ["article"]:
+        search_term = request.GET.get("article")
+        searched_articles = Article.search_by_title(sear_term)
+        message = f"{sear_term}"
+
+        return render(request, 'all-news/search.html', {"message":message,"articles":searched_articles})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'all-news/search.html',{"message":message})
