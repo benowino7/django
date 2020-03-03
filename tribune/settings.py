@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'news',
+    'bootstrap3',
     'bootstrap4',
     'tinymce',
     'registration'
