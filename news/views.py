@@ -15,8 +15,15 @@ def news_today(request):
     date = dt.date.today()
     news = Article.todays_news()
     form = NewsLetterForm()
-    return render(request, 'all-news/today-news.html',{'date': date,"news":news,"letterForm":form})
 
+    if request.method == 'POST':
+        form = NewsLetterForm(request.POST)
+        if form.is_valid():
+            print('valid')
+    else:
+        form = NewsLetterForm()
+    return render(request, 'all-news/today-news.html', {"date": date,"news":news,"letterForm":form})
+    
 def newsletter(request):
     name = request.POST.get('your_name')
     email = request.POST.get('email')
